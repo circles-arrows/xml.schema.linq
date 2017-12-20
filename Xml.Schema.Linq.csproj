@@ -17,6 +17,14 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <PackageId>Xml.Schema.Linq.NetStandard2</PackageId>
+    <Authors>Microsoft</Authors>
+    <PackageProjectUrl>https://github.com/xirqlz/xml.schema.linq</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/xirqlz/xml.schema.linq/blob/master/license.md</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/xirqlz/xml.schema.linq.git</RepositoryUrl>
+    <RepositoryType>GITHUB</RepositoryType>
+    <PackageTags>XSD Linq</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

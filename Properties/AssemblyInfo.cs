@@ -4,10 +4,10 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Xirqlz")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCopyright("Copyright © Microsoft")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Recompiled net standard 2 version of Xml.Schema.Linq from Linq 2 XSD.\r\nVery useful when you want to ues Linq2XSD generated schemas from net core.")]
 [assembly: AssemblyFileVersion("2.0.2.12")]
 [assembly: AssemblyInformationalVersion("2.0.2.12")]
 [assembly: AssemblyProduct("XObjects")]
