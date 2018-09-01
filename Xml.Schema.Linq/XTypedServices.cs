@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Threading;
@@ -319,11 +320,82 @@ namespace Xml.Schema.Linq
 		internal static T ParseValue<T>(string value, XElement element, XmlSchemaDatatype datatype)
 		{
 			T t;
-			t = ((datatype.TypeCode == XmlTypeCode.QName ? false : datatype.TypeCode != XmlTypeCode.NCName) ? (T)datatype.ChangeType(value, typeof(T)) : (T)datatype.ParseValue(value, XTypedServices.NameTable, new XNamespaceResolver(element)));
+			t = ((datatype.TypeCode == XmlTypeCode.QName ? false : datatype.TypeCode != XmlTypeCode.NCName) ? ParseValueFast<T>(value, datatype) : (T)datatype.ParseValue(value, XTypedServices.NameTable, new XNamespaceResolver(element)));
 			return t;
 		}
+        private static T ParseValueFast<T>(string value, XmlSchemaDatatype datatype)
+        {
+            switch (typeof(T).Name)
+            {
+                case nameof(System.String):
+                    return (T)(object)value;
+                case nameof(System.Boolean):
+                    {
+                        switch (value)
+                        {
+                            case "true":
+                            case "1":
+                                return (T)(object)true;
+                            case "false":
+                            case "0":
+                                return (T)(object)false;
+                        }
+                        break;
+                    }
+                case nameof(System.Int16):
+                    {
+                        short retval;
+                        if (short.TryParse(value, out retval))
+                            return (T)(object)retval;
+                        break;
+                    }
+                case nameof(System.UInt16):
+                    {
+                        ushort retval;
+                        if (ushort.TryParse(value, out retval))
+                            return (T)(object)retval;
+                        break;
+                    }
+                case nameof(System.Int32):
+                    {
+                        int retval;
+                        if (int.TryParse(value, out retval))
+                            return (T)(object)retval;
+                        break;
+                    }
+                case nameof(System.UInt32):
+                    {
+                        uint retval;
+                        if (uint.TryParse(value, out retval))
+                            return (T)(object)retval;
+                        break;
+                    }
+                case nameof(System.Int64):
+                    {
+                        long retval;
+                        if (long.TryParse(value, out retval))
+                            return (T)(object)retval;
+                        break;
+                    }
+                case nameof(System.UInt64):
+                    {
+                        ulong retval;
+                        if (ulong.TryParse(value, out retval))
+                            return (T)(object)retval;
+                        break;
+                    }
+                case nameof(System.Decimal):
+                    {
+                        decimal retval;
+                        if (decimal.TryParse(value, NumberStyles.Number, CultureInfo.InvariantCulture, out retval))
+                            return (T)(object)retval;
+                        break;
+                    }
+            }
+            return (T)datatype.ChangeType(value, typeof(T));
+        }
 
-		internal static string QNameToString(XmlQualifiedName qName, XElement element)
+        internal static string QNameToString(XmlQualifiedName qName, XElement element)
 		{
 			string str;
 			Debug.Assert(qName != null);
