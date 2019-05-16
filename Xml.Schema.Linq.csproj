@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup Label="Globals">
     <SccProjectName>SAK</SccProjectName>
@@ -19,6 +19,7 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <PackageId>Xml.Schema.Linq.NetStandard2</PackageId>
     <Authors>Microsoft</Authors>
+    <PackageVersion>1.0.1</PackageVersion>
     <PackageProjectUrl>https://github.com/xirqlz/xml.schema.linq</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/xirqlz/xml.schema.linq/blob/master/license.md</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/xirqlz/xml.schema.linq.git</RepositoryUrl>
